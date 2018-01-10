@@ -1,0 +1,5 @@
+
+
+docker run -v /var/run/postgresql:/var/run/postgresql -p 0.0.0.0:5432:5432 --name spark-postgres -d postgres
+
+

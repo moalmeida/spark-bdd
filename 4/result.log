@@ -1,0 +1,25 @@
+total 76
+drwxr-xr-x  58 0 0 4096 Jan  9 11:24 .
+drwxr-xr-x  58 0 0 4096 Jan  9 11:24 ..
+drwxr-xr-x   2 0 0 4096 Dec 12 06:04 bin
+drwxr-xr-x   2 0 0 4096 Nov 19 15:25 boot
+drwxr-xr-x   5 0 0  340 Jan  9 11:24 dev
+drwxr-xr-x   2 0 0 4096 Dec 12 06:04 docker-entrypoint-initdb.d
+lrwxrwxrwx   1 0 0   34 Dec 12 06:05 docker-entrypoint.sh -> usr/local/bin/docker-entrypoint.sh
+-rwxr-xr-x   1 0 0    0 Jan  9 11:24 .dockerenv
+drwxr-xr-x  71 0 0 4096 Jan  9 11:24 etc
+drwxr-xr-x   2 0 0 4096 Nov 19 15:25 home
+drwxr-xr-x  11 0 0 4096 Dec 10 00:00 lib
+drwxr-xr-x   2 0 0 4096 Dec 10 00:00 lib64
+drwxr-xr-x   2 0 0 4096 Dec 10 00:00 media
+drwxr-xr-x   2 0 0 4096 Dec 10 00:00 mnt
+drwxr-xr-x   2 0 0 4096 Dec 10 00:00 opt
+dr-xr-xr-x 250 0 0    0 Jan  9 11:24 proc
+drwx------   2 0 0 4096 Dec 12 06:04 root
+drwxr-xr-x   7 0 0 4096 Dec 12 06:05 run
+drwxr-xr-x   2 0 0 4096 Dec 12 06:04 sbin
+drwxr-xr-x   2 0 0 4096 Dec 10 00:00 srv
+dr-xr-xr-x  13 0 0    0 Jan  9 10:48 sys
+drwxrwxrwt   2 0 0 4096 Dec 12 06:05 tmp
+drwxr-xr-x  29 0 0 4096 Dec 10 00:00 usr
+drwxr-xr-x  26 0 0 4096 Dec 10 00:00 var
