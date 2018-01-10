@@ -1,8 +1,15 @@
 "use strict";
 
-let value = 0
+let matrix = setMatrix(3, 3);
 
 module.exports = {
-  increment: () => value++,
-  get: () => value,
+  setMatrix: (heigth, width) => {
+    matrix = Array(width).fill(Array(heigth).fill(0))
+  }
+  getCell: (x, y) => {
+    return matrix[x, y]
+  },
+  setCell: (x, y, v) => {
+    matrix[x, y] = v;
+  }
 }
