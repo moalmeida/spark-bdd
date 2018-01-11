@@ -13,8 +13,6 @@ describe("model/matrix unit test", () => {
     expect(board.matrix).toBeDefined();
   });
 
-  it("should setMatrix() without error", () => {});
-
   it("should setCell() without error", () => {});
 
   it("should getCell() without error", () => {});
