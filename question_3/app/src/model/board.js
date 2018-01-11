@@ -1,5 +1,6 @@
 "use strict";
 
+const _ = require('lodash');
 const Matrix = require('./matrix');
 
 module.exports = class Board extends Matrix {
@@ -12,25 +13,25 @@ module.exports = class Board extends Matrix {
     return (cell == 1 && count < 2)
   }
 
-  isCellActiveAndCountTwoOrThree(a, b) {
+  isCellActiveAndCountTwoOrThree(cell, count) {
     return (cell == 1 && (count == 2 || count == 3))
   }
 
-  isCellActiveAndCountMoreThanThree(a, b) {
+  isCellActiveAndCountMoreThanThree(cell, count) {
     return (cell == 1 && count > 3)
   }
 
-  isCellInactiveAndCountExactlyThree(a, b) {
+  isCellInactiveAndCountExactlyThree(cell, count) {
     return (cell == 0 && count == 3)
   }
 
-  isNextGenCellActive(x, y) {
-    const cell = getCell(x, y);
-    const count = countNeighbourCells(x, y);
-    return (!isCellActiveAndCountFewerThanTwo(cell, count) &&
-      isCellActiveAndCountTwoOrThree(cell, count) &&
-      !isCellActiveAndCountMoreThanThree(cell, count) &&
-      isCellInactiveAndCountExactlyThree(cell, count)
+  setNextGenCell(cell, count) {
+    this.isNextGenCellActive(cell, count) ? cell = 1 : cell = 0
+  }
+
+  isNextGenCellActive(cell, count) {
+    return (!(this.isCellActiveAndCountFewerThanTwo(cell, count) || this.isCellActiveAndCountMoreThanThree(cell, count)) ||
+      (this.isCellActiveAndCountTwoOrThree(cell, count) || this.isCellInactiveAndCountExactlyThree(cell, count))
     )
   }
 

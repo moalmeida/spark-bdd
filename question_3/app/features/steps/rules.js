@@ -1,93 +1,104 @@
 "use strict";
 
-const {Given, When, Then} = require('cucumber');
-const {expect} = require('chai')
-// const neighbour = require('../../src/helper/neighbour');
-const Board = require('../../src/model/board');
+const {
+  Given,
+  When,
+  Then
+} = require('cucumber')
+const {
+  expect,
+  assert
+} = require('chai')
+const Board = require('../../src/model/board')
 
-// let answer = true;
-const widthPosition = 1;
-const heigthPosition = 1
 let board;
-// let neighbours = 0;
 
 Given('Any live ​cell', () => {
   board = new Board(3, 3);
-  board.setCell(widthPosition, heigthPosition, 1);
-  // Write code here that turns the phrase above into concrete actions
-  // callback(null, 'pending');
+  board.setCell(1, 1, 1);
+
+  board.setCell(0, 0, 1);
 });
 
-When('with ​fewer than {int} live ​neighbours', (int) => {
-  // Write code here that turns the phrase above into concrete actions
-  // board.setCell(widthPosition, heigthPosition, 1);
-  const cell = board.getCell(widthPosition, heigthPosition)
-  expect(cell).to.equal(0);
-  const cells = board.countNeighbourCells(widthPosition, heigthPosition)
-  expect(cells).to.be.below(int)
-  // callback(null, 'pending');
+When('with ​fewer than {int} live ​neighbours', (two) => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  assert.isBelow(count, two)
 });
 
 Then('dies, as if caused by underpopulation', () => {
-  // Write code here that turns the phrase above into concrete actions
-  // callback(null, 'pending');
+  let cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  board.setNextGenCell(cell, count)
+  expect(board.getCell(1, 1)).to.equal(0)
 });
 
-Given('Any ​live ​cell ​', (callback) => {
+Given('Any ​live ​cell ​', () => {
   board = new Board(3, 3);
-  // Write code here that turns the phrase above into concrete actions
-  callback(null, 'pending');
+  board.setCell(1, 1, 1);
+
+  board.setCell(0, 0, 1);
+  board.setCell(0, 1, 1);
+  board.setCell(2, 2, 1);
 });
 
-When('with {int} ​or {int} live neighbours', (int, int2) => {
-  // Write code here that turns the phrase above into concrete actions
-  const cells = board.countNeighbourCells(widthPosition, heigthPosition)
-  expect(cells).to.equal(int);
-  expect(cells).to.equal(int2);
+When('with {int} ​or {int} live neighbours', (two, three) => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  expect(count).to.equal(three);
+  expect(board.isNextGenCellActive(cell, count)).to.equal(true)
 });
 
-Then('lives ​on to the next generation', (callback) => {
-  // Write code here that turns the phrase above into concrete actions
-  callback(null, 'pending');
+Then('lives ​on to the next generation', () => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  board.setNextGenCell(cell, count)
+  expect(board.getCell(1, 1)).to.equal(1)
 });
 
-Given('Any ​live ​cell', (callback) => {
+Given('Any ​live ​cell', () => {
   board = new Board(3, 3);
-  // Write code here that turns the phrase above into concrete actions
-  callback(null, 'pending');
+  board.setCell(1, 1, 1);
+
+  board.setCell(0, 0, 1);
+  board.setCell(0, 1, 1);
+  board.setCell(0, 2, 1);
+  board.setCell(2, 2, 1);
 });
 
-When('with ​more than {int} ​live ​neighbours', (int, callback) => {
-  // Write code here that turns the phrase above into concrete actions
-  const cells = board.countNeighbourCells(widthPosition, heigthPosition)
-  expect(cells).to.equal(int);
-  callback(null, 'pending');
+When('with ​more than {int} ​live ​neighbours', (three) => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  assert.isAbove(three, count)
+  expect(board.isNextGenCellActive(cell, count)).to.equal(false)
 });
 
-Then('​dies, ​as ​if ​by overpopulation', (callback) => {
-  // Write code here that turns the phrase above into concrete actions
-  callback(null, 'pending');
+Then('​dies, ​as ​if ​by overpopulation', () => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  board.setNextGenCell(cell, count)
+  expect(board.getCell(1, 1)).to.equal(0)
 });
 
-Given('Any ​dead cell', (callback) => {
+Given('Any ​dead cell', () => {
   board = new Board(3, 3);
-  // Write code here that turns the phrase above into concrete actions
-  callback(null, 'pending');
+  board.setCell(1, 1, 0);
+
+  board.setCell(0, 0, 1);
+  board.setCell(0, 1, 1);
+  board.setCell(2, 2, 1);
 });
 
-When('with exactly ​{int} ​live ​neighbours', (int, callback) => {
-  // Write code here that turns the phrase above into concrete actions
-  const cells = board.countNeighbourCells(widthPosition, heigthPosition)
-  expect(cells).to.equal(int);
-  callback(null, 'pending');
+When('with exactly ​{int} ​live ​neighbours', (three) => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  expect(count).to.equal(three);
+  expect(board.isNextGenCellActive(cell, count)).to.equal(true)
 });
 
-Then('becomes ​a ​live ​cell, ​as​ ​if ​by reproduction', (callback) => {
-  // Write code here that turns the phrase above into concrete actions
-  callback(null, 'pending');
+Then('becomes ​a ​live ​cell, ​as​ ​if ​by reproduction', () => {
+  const cell = board.getCell(1, 1)
+  const count = board.countNeighbourCells(1, 1)
+  board.setNextGenCell(cell, count)
+  expect(board.getCell(1, 1)).to.equal(1)
 });
-
-// answer = table.raw()
-//     .map(row => row[0])
-//     .map(v => parseInt(v))
-//     .reduce((current, next) => current + next, answer);
