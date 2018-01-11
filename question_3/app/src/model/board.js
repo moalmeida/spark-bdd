@@ -25,14 +25,17 @@ module.exports = class Board extends Matrix {
     return (cell == 0 && count == 3)
   }
 
-  setNextGenCell(cell, count) {
-    this.isNextGenCellActive(cell, count) ? cell = 1 : cell = 0
+  setNextGenCell(x, y) {
+    const cell = this.getCell(x, y)
+    const count = this.countNeighbourCells(x, y)
+    const isActive = this.isNextGenCellActive(cell, count)
+    isActive
+      ? this.setCell(x, y, 1)
+      : this.setCell(x, y, 0)
   }
 
   isNextGenCellActive(cell, count) {
-    return (!(this.isCellActiveAndCountFewerThanTwo(cell, count) || this.isCellActiveAndCountMoreThanThree(cell, count)) ||
-      (this.isCellActiveAndCountTwoOrThree(cell, count) || this.isCellInactiveAndCountExactlyThree(cell, count))
-    )
+    return (!(this.isCellActiveAndCountFewerThanTwo(cell, count) || this.isCellActiveAndCountMoreThanThree(cell, count)) || (this.isCellActiveAndCountTwoOrThree(cell, count) || this.isCellInactiveAndCountExactlyThree(cell, count)))
   }
 
 };
