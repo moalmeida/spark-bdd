@@ -11,66 +11,43 @@ module.exports = class Board {
   }
 
   setCell(x, y, v) {
-    this.matrix[x, y] = v
+    this.matrix[x][y] = v
   }
 
   getCell(x, y) {
-    return this.matrix[x, y] || 0
+    return this.matrix[x][y] || 0
   }
 
   getLeftUpperCell(x, y) {
-    return this.matrix[
-      x - 1,
-      y - 1
-    ] || 0
+    return this.matrix[x - 1][y - 1] || 0
   }
 
   getLeftMiddleCell(x, y) {
-    return this.matrix[
-      x + 1,
-      y - 1
-    ] || 0
+    return this.matrix[x + 1][y - 1] || 0
   }
 
   getLeftLowerCell(x, y) {
-    return this.matrix[
-      x + 1,
-      y - 1
-    ] || 0
+    return this.matrix[x + 1][y - 1] || 0
   }
 
   getMiddleUpperCell(x, y) {
-    return this.matrix[
-      x - 1,
-      y
-    ] || 0
+    return this.matrix[x - 1][y] || 0
   }
 
   getMiddleLowerCell(x, y) {
-    return this.matrix[
-      x + 1,
-      y
-    ] || 0
+    return this.matrix[x + 1][y] || 0
   }
 
   getRightUpperCell(x, y) {
-    return this.matrix[
-      x - 1,
-      y + 1
-    ] || 0
+    return this.matrix[x - 1][y + 1] || 0
   }
 
   getRightMiddleCell(x, y) {
-    return this.matrix[
-      x, y + 1
-    ] || 0
+    return this.matrix[x][y + 1] || 0
   }
 
   getRightLowerCell(x, y) {
-    return this.matrix[
-      x + 1,
-      y + 1
-    ] || 0
+    return this.matrix[x + 1][y + 1] || 0
   }
 
   countNeighbourCells(x, y) {

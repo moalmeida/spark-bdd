@@ -10,7 +10,7 @@
     },
     "settings": {
         "node": {
-            "allowModules": ["rewire", "gulp", "cucumber", "isparta", "gulp-cucumber", "gulp-sequence", "gulp-istanbul", "gulp-eslint", "gulp-jasmine"],
+            "allowModules": ["rewire", "chai", "gulp", "cucumber", "isparta", "gulp-cucumber", "gulp-sequence", "gulp-istanbul", "gulp-eslint", "gulp-jasmine"],
         }
     },
     "rules": {
