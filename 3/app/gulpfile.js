@@ -8,14 +8,14 @@ const cucumber = require('gulp-cucumber');
 const sequence = require('gulp-sequence');
 
 gulp.task('lint', () => {
-    return gulp.src(['app/**/*.js', '!node_modules/**'])
+    return gulp.src(['src/**/*.js', '!node_modules/**'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
 
 gulp.task('istabul-hook', () => {
-  return gulp.src(['app/**/*.js', '!app/**/app.js', '!app/**/index.js', '!app/**/*.spec.js'])
+  return gulp.src(['src/**/*.js', '!src/**/*.spec.js'])
     .pipe(istanbul({
       includeUntested: true,
     }))
@@ -23,7 +23,7 @@ gulp.task('istabul-hook', () => {
 });
 
 gulp.task('test', ['istabul-hook'], () => {
-    return gulp.src(['app/**/*.spec.js'])
+    return gulp.src(['src/**/*.spec.js'])
          .pipe(jasmine({
            verbose: true,
          }))
@@ -31,9 +31,9 @@ gulp.task('test', ['istabul-hook'], () => {
 });
 
 gulp.task('cucumber', () => {
-    return gulp.src('app/features/*')
+    return gulp.src('features/*')
     .pipe(cucumber({
-        'steps': 'app/features/**/*.js'
+        'steps': 'features/**/*.js'
     }));
 });
 
