@@ -1,10 +1,2 @@
-FROM node:8
+FROM fluvip/replace_text
 MAINTAINER "moalmeida" <moalmeida@koinosystems.com>
-
-RUN mkdir -p /app
-WORKDIR /app
-
-COPY . /app
-RUN npm install
-
-CMD ["npm", "start"]
