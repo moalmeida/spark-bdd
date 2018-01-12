@@ -1,6 +1,5 @@
 "use strict";
 
-const _ = require('lodash');
 const Matrix = require('./matrix');
 
 module.exports = class Board extends Matrix {

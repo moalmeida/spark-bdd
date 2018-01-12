@@ -9,15 +9,15 @@ module.exports = class Matrix {
   }
 
   setMatrix(heigth, width) {
-    this.matrix = _.range(heigth).map(() => _.range(width).map(() => 0));
+    this.data = _.range(heigth).map(() => _.range(width).map(() => 0));
   }
 
   setCell(x, y, v) {
-    this.matrix[x][y] = eval(v)
+    this.data[x][y] = eval(v)
   }
 
   getCell(x, y) {
-    return this.matrix[x][y]
+    return this.data[x][y]
   }
 
   getLeftUpperCell(x, y) {

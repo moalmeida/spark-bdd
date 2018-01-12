@@ -11,9 +11,7 @@ Before(() => {
 });
 
 Given('Any live ​cell', () => {
-  // central cell
   board.setCell(1, 1, 1);
-  // neighbour cells
   board.setCell(0, 0, 1);
 });
 
@@ -28,9 +26,7 @@ Then('dies, as if caused by underpopulation', () => {
 });
 
 Given('Any ​live ​cell ​', () => {
-  // central cell
   board.setCell(1, 1, 0);
-  // neighbour cells
   board.setCell(0, 0, 1);
   board.setCell(0, 1, 1);
   board.setCell(2, 2, 1);
@@ -47,9 +43,7 @@ Then('lives ​on to the next generation', () => {
 });
 
 Given('Any ​live ​cell', () => {
-  // central cell
   board.setCell(1, 1, 1);
-  // neighbour cells
   board.setCell(0, 0, 1);
   board.setCell(0, 1, 1);
   board.setCell(0, 2, 1);
@@ -67,9 +61,7 @@ Then('​dies, ​as ​if ​by overpopulation', () => {
 });
 
 Given('Any ​dead cell', () => {
-  // central cell
   board.setCell(1, 1, 0);
-  // neighbour cells
   board.setCell(0, 0, 1);
   board.setCell(0, 1, 1);
   board.setCell(2, 2, 1);
